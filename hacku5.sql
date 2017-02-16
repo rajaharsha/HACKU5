@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2017 at 09:02 PM
+-- Generation Time: Feb 16, 2017 at 09:12 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -127,7 +127,8 @@ ALTER TABLE `cu_mode_url`
 --
 ALTER TABLE `cu_user_likes`
   ADD PRIMARY KEY (`lid`),
-  ADD KEY `cu_user_likes_mid_fk` (`mid`);
+  ADD KEY `cu_user_likes_mid_fk` (`mid`),
+  ADD KEY `cu_user_likes_uid_fk` (`uid`);
 
 --
 -- Indexes for table `cu_user_modes`
@@ -181,7 +182,7 @@ ALTER TABLE `cu_mode_url`
 --
 ALTER TABLE `cu_user_likes`
   ADD CONSTRAINT `cu_user_likes_mid_fk` FOREIGN KEY (`mid`) REFERENCES `cu_user_modes` (`mid`),
-  ADD CONSTRAINT `cu_user_likes_uid_fk` FOREIGN KEY (`mid`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `cu_user_likes_uid_fk` FOREIGN KEY (`uid`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `cu_user_modes`
