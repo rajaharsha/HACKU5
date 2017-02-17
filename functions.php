@@ -14,26 +14,22 @@
 		}
 	}
 
-// 	if ($_SESSION['FBID']){
-// 	$_SESSION['LOGIN_SCOPE'] = "FB";
-// }elseif(){
-// 	$_SESSION['LOGIN_SCOPE'] = "GOOGLE";
-// }
+	function get_mode_url($connection, $id,$mid)
 
-
-	function get_mode_url($id,$,$mid){
-	
+	{
 		$query = "
 		SELECT
-		cu_mode_url.url 
+		cmu.url as URL
 		FROM
-		users u left outer join cu_user_modes cum
+		users u inner join cu_user_modes cum
 		on u.id = cum.uid
 		inner join cu_mode_url cmu
 		on cum.mid = cmu.mid
-		WHERE id = $id AND mid = $mid
+		WHERE u.id = $id AND cum.mid = $mid
 		";
-		$query_result = mysqli_query($query);
+
+		$query_result = mysqli_query($connection,$query);
 		return $query_result;
-	}
+	}   
+
 ?>
