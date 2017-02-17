@@ -22,7 +22,12 @@
 		return $query_result;
 	}   
 
+
+
 	$test =	get_mode_url($connection, $id,$mid);
+	var_dump($test);
+
+
 	$row = mysqli_fetch_assoc($test);
 	echo $row["URL"];
 ?>
