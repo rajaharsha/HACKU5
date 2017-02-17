@@ -1,6 +1,7 @@
 <?php
 	require 'dbconfig.php';
 	global $connection;
+
 	function checkuser($fbid,$fbfullname,$femail){
     	$check = mysql_query("select * from Users where Fuid='$fuid'");
 		$check = mysql_num_rows($check);
@@ -19,4 +20,20 @@
 // 	$_SESSION['LOGIN_SCOPE'] = "GOOGLE";
 // }
 
+
+	function get_mode_url($id,$,$mid){
+	
+		$query = "
+		SELECT
+		cu_mode_url.url 
+		FROM
+		users u left outer join cu_user_modes cum
+		on u.id = cum.uid
+		inner join cu_mode_url cmu
+		on cum.mid = cmu.mid
+		WHERE id = $id AND mid = $mid
+		";
+		$query_result = mysqli_query($query);
+		return $query_result;
+	}
 ?>
